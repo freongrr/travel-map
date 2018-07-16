@@ -17,15 +17,22 @@ module.exports = {
                     "source-map-loader",
                 ],
                 enforce: "pre"
-            },
-            {
+            }, {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: [
                     "babel-loader",
                     "eslint-loader"
                 ]
+            }, {
+                test: /\.scss$/,
+                use: [
+                    "style-loader?sourceMap",
+                    "css-loader?sourceMap",
+                    "sass-loader?sourceMap"
+                ]
             }
+
         ]
     },
     plugins: [
