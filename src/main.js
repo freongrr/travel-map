@@ -1,35 +1,59 @@
-import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
-
-import FEATURES from "./features.json";
-import TOKEN from "./mapbox-token.js";
 import "./styles.scss";
 
-// TODO : read token from somewhere?
+import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
+import TOKEN from "./mapbox-token.js";
+import PLACES from "./places.json";
+
+// Convert custom format to geojson
+const DATA = {
+    "type": "FeatureCollection",
+    "features": PLACES.map(p => {
+        return {
+            "type": "Feature",
+            "properties": {
+                "title": p.name,
+                "description": p.name,
+                "icon": p.icon
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": p.coordinates
+            }
+        };
+    })
+};
+
 mapboxgl.accessToken = TOKEN;
 
 const map = new mapboxgl.Map({
     container: "map",
-    style: "mapbox://styles/mapbox/streets-v10",
-    center: [-77.04, 38.907],
-    zoom: 11.15
+    // style: "mapbox://styles/mapbox/bright-v9"
+    style: "mapbox://styles/freongrr/cjjo11jdxf3rs2rpb5x42cv4m"
+    // center: [-77.04, 38.907],
+    // zoom: 11.15
 });
 
-
 map.on("load", function() {
-    // Add a layer showing the places.
     map.addLayer({
         "id": "places",
         "type": "symbol",
         "source": {
             "type": "geojson",
-            "data": {
-                "type": "FeatureCollection",
-                "features": FEATURES
-            }
+            "data": DATA
         },
         "layout": {
-            "icon-image": "{icon}-15",
-            "icon-allow-overlap": true
+            "text-field": "{title}",
+            "text-font": ["Roboto Regular"],
+            "text-size": 16,
+            "text-letter-spacing": 0.05,
+            // TODO : this works in the style editor, but not here...
+            // "text-halo-color": "hsl(0, 100%, 100%)",
+            // "text-halo-width": 2,
+            // "text-halo-blur": 0.5,
+            "text-offset": [0, 1],
+            "text-anchor": "top",
+            "icon-size": 1.5,
+            "icon-image": "{icon}-15"
         }
     });
 
