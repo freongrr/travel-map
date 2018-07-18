@@ -27,33 +27,37 @@ mapboxgl.accessToken = TOKEN;
 
 const map = new mapboxgl.Map({
     container: "map",
-    // style: "mapbox://styles/mapbox/bright-v9"
     style: "mapbox://styles/freongrr/cjjo11jdxf3rs2rpb5x42cv4m"
     // center: [-77.04, 38.907],
     // zoom: 11.15
 });
 
 map.on("load", function() {
+    map.addSource("places", {
+        type: "geojson",
+        data: DATA
+    });
+
     map.addLayer({
-        "id": "places",
+        "id": "place-layer",
         "type": "symbol",
-        "source": {
-            "type": "geojson",
-            "data": DATA
-        },
+        source: "places",
         "layout": {
             "text-field": "{title}",
             "text-font": ["Roboto Regular"],
+            // TODO : increase with zoom
             "text-size": 16,
             "text-letter-spacing": 0.05,
-            // TODO : this works in the style editor, but not here...
-            // "text-halo-color": "hsl(0, 100%, 100%)",
-            // "text-halo-width": 2,
-            // "text-halo-blur": 0.5,
             "text-offset": [0, 1],
             "text-anchor": "top",
             "icon-size": 1.5,
             "icon-image": "{icon}-15"
+        },
+        "paint": {
+            "text-color": "#008",
+            "text-halo-color": "white",
+            "text-halo-width": 2,
+            "text-halo-blur": 0.5
         }
     });
 
