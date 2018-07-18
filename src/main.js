@@ -35,13 +35,48 @@ const map = new mapboxgl.Map({
 map.on("load", function() {
     map.addSource("places", {
         type: "geojson",
-        data: DATA
+        data: DATA,
+        cluster: true
     });
 
     map.addLayer({
-        "id": "place-layer",
-        "type": "symbol",
+        id: "place-cluster",
+        type: "circle",
         source: "places",
+        filter: ["has", "point_count"],
+        paint: {
+            "circle-blur": 0.5,
+            "circle-color": "#FFF",
+            "circle-radius": [
+                "step", ["get", "point_count"],
+                50,
+                5,
+                50,
+                10,
+                60
+            ]
+        }
+    });
+
+    map.addLayer({
+        id: "place-count",
+        type: "symbol",
+        source: "places",
+        filter: ["has", "point_count"],
+        layout: {
+            "text-field": "{point_count_abbreviated} places",
+            "text-size": 16
+        },
+        paint: {
+            "text-color": "#008",
+        }
+    });
+
+    map.addLayer({
+        id: "place-symbols",
+        type: "symbol",
+        source: "places",
+        filter: ["!has", "point_count"],
         "layout": {
             "text-field": "{title}",
             "text-font": ["Roboto Regular"],
@@ -63,7 +98,7 @@ map.on("load", function() {
 
     // When a click event occurs on a feature in the places layer, open a popup at the
     // location of the feature, with description HTML from its properties.
-    map.on("click", "places", function(e) {
+    map.on("click", "place-symbols", function(e) {
         var coordinates = e.features[0].geometry.coordinates.slice();
         var description = e.features[0].properties.description;
 
@@ -81,12 +116,12 @@ map.on("load", function() {
     });
 
     // Change the cursor to a pointer when the mouse is over the places layer.
-    map.on("mouseenter", "places", function() {
+    map.on("mouseenter", "place-symbols", function() {
         map.getCanvas().style.cursor = "pointer";
     });
 
     // Change it back to a pointer when it leaves.
-    map.on("mouseleave", "places", function() {
+    map.on("mouseleave", "place-symbols", function() {
         map.getCanvas().style.cursor = "";
     });
 });
