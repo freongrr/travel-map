@@ -32,7 +32,8 @@ const map = new mapboxgl.Map({
     // zoom: 11.15
 });
 
-map.on("load", function() {
+map.on("load", () => {
+
     map.addSource("places", {
         type: "geojson",
         data: DATA,
@@ -98,9 +99,11 @@ map.on("load", function() {
 
     // When a click event occurs on a feature in the places layer, open a popup at the
     // location of the feature, with description HTML from its properties.
-    map.on("click", "place-symbols", function(e) {
-        var coordinates = e.features[0].geometry.coordinates.slice();
-        var description = e.features[0].properties.description;
+    map.on("click", "place-symbols", e => {
+        const feature = e.features[0];
+        const coordinates = feature.geometry.coordinates.slice();
+        const description = `${feature.properties.description}<br />
+                             Type: ${e.features[0].properties.icon}`;
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
@@ -116,12 +119,12 @@ map.on("load", function() {
     });
 
     // Change the cursor to a pointer when the mouse is over the places layer.
-    map.on("mouseenter", "place-symbols", function() {
+    map.on("mouseenter", "place-symbols", () => {
         map.getCanvas().style.cursor = "pointer";
     });
 
     // Change it back to a pointer when it leaves.
-    map.on("mouseleave", "place-symbols", function() {
+    map.on("mouseleave", "place-symbols", () => {
         map.getCanvas().style.cursor = "";
     });
 });
