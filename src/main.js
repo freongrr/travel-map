@@ -3,19 +3,20 @@ import "./styles.scss";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
 import TOKEN from "./mapbox-token.js";
 import PLACES from "./places.json";
+import COUNTRIES from "./countries.geojson";
 
 // Convert custom format to geojson
 const DATA = {
-    "type": "FeatureCollection",
-    "features": PLACES.map(p => {
+    type: "FeatureCollection",
+    features: PLACES.map(p => {
         return {
-            "type": "Feature",
-            "properties": {
+            type: "Feature",
+            properties: {
                 "title": p.name,
                 "description": p.name,
                 "icon": p.icon
             },
-            "geometry": {
+            geometry: {
                 "type": "Point",
                 "coordinates": p.coordinates
             }
@@ -34,16 +35,43 @@ const map = new mapboxgl.Map({
 
 map.on("load", () => {
 
-    map.addSource("places", {
+    map.addSource("clustered-places", {
         type: "geojson",
         data: DATA,
         cluster: true
     });
 
+    // TODO : this could be hosted on MapBox
+    map.addSource("countries", {
+        "type": "geojson",
+        "data": COUNTRIES
+    });
+
+    const countryFilter = ["in", "alpha3"];
+    PLACES.forEach(p => {
+        if (p.country && countryFilter.indexOf(p.country) < 0) {
+            countryFilter.push(p.country);
+        }
+    });
+    console.log("Country filter: " + countryFilter);
+
+    // The feature-state dependent fill-opacity expression will render the hover effect
+    //  when a feature's hover state is set to true.
+    map.addLayer({
+        id: "countries-fills",
+        type: "fill",
+        source: "countries",
+        layout: {},
+        filter: countryFilter,
+        paint: {
+            "fill-color": "rgba(255, 255, 255, 0.75)"
+        }
+    }, "country-borders");
+
     map.addLayer({
         id: "place-cluster",
         type: "circle",
-        source: "places",
+        source: "clustered-places",
         filter: ["has", "point_count"],
         paint: {
             "circle-blur": 0.5,
@@ -62,7 +90,7 @@ map.on("load", () => {
     map.addLayer({
         id: "place-count",
         type: "symbol",
-        source: "places",
+        source: "clustered-places",
         filter: ["has", "point_count"],
         layout: {
             "text-field": "{point_count_abbreviated} places",
@@ -76,9 +104,9 @@ map.on("load", () => {
     map.addLayer({
         id: "place-symbols",
         type: "symbol",
-        source: "places",
+        source: "clustered-places",
         filter: ["!has", "point_count"],
-        "layout": {
+        layout: {
             "text-field": "{title}",
             "text-font": ["Roboto Regular"],
             // TODO : increase with zoom
@@ -89,7 +117,7 @@ map.on("load", () => {
             "icon-size": 1.5,
             "icon-image": "{icon}-15"
         },
-        "paint": {
+        paint: {
             "text-color": "#008",
             "text-halo-color": "white",
             "text-halo-width": 2,
