@@ -1,211 +1,253 @@
 [{
-  "name": "Mouans Sartoux, France",
+  "name": "Mouans Sartoux",
   "country": "FRA",
+  "countryName": "France",
   "icon": "star",
   "coordinates": [6.94215518, 43.60545948]
 }, {
-  "name": "Tōkyō, Japon",
+  "name": "Tōkyō",
   "country": "JPN",
+  "countryName": "Japon",
   "icon": "star",
   "coordinates": [139.66436866, 35.66613639]
 }, {
-  "name": "Kyōto, Japon",
+  "name": "Kyōto",
   "country": "JPN",
+  "countryName": "Japon",
   "icon": "lodging",
   "coordinates": [135.72559830, 34.99967018]
 }, {
-  "name": "Sendai,Japon",
+  "name": "Sendai",
   "country": "JPN",
+  "countryName": "Japon",
   "icon": "lodging",
   "coordinates": [140.84287636, 38.24840567]
 }, {
-  "name": "Okayama, Japon",
+  "name": "Okayama",
   "country": "JPN",
+  "countryName": "Japon",
   "icon": "rail",
   "coordinates": [133.89573830, 34.64205749]
 }, {
-  "name": "Himeji, Japon",
+  "name": "Himeji",
   "country": "JPN",
+  "countryName": "Japon",
   "icon": "rail",
   "coordinates": [134.64617042, 34.79471659]
 }, {
-  "name": "Hiroshima, Japon",
+  "name": "Hiroshima",
   "country": "JPN",
+  "countryName": "Japon",
   "icon": "rail",
   "coordinates": [132.42970983, 34.37411194]
 }, {
-  "name": "Naha, Japon",
+  "name": "Naha",
   "country": "JPN",
+  "countryName": "Japon",
   "icon": "lodging",
   "coordinates": [127.63860113, 26.19060122]
 }, {
-  "name": "Ishigaki, Japon",
+  "name": "Ishigaki",
   "country": "JPN",
+  "countryName": "Japon",
   "icon": "lodging",
   "coordinates": [124.12420861, 24.31477944]
 }, {
-  "name": "Paris, France",
+  "name": "Paris",
   "country": "FRA",
+  "countryName": "France",
   "icon": "lodging",
   "coordinates": [2.35552571, 48.83950449]
 }, {
-  "name": "Strasbourg, France",
+  "name": "Strasbourg",
   "country": "FRA",
+  "countryName": "France",
   "icon": "lodging",
   "coordinates": [7.78991905, 48.55591517]
 }, {
-  "name": "Helsinki, Finlande",
+  "name": "Helsinki",
   "country": "FIN",
+  "countryName": "Finlande",
   "icon": "lodging",
   "coordinates": [24.90468988, 60.18202480]
 }, {
-  "name": "Turku, Finlande",
+  "name": "Turku",
   "country": "FIN",
+  "countryName": "Finlande",
   "icon": "lodging",
   "coordinates": [22.29525406, 60.43924210]
 }, {
-  "name": "Naantali, Finlande",
+  "name": "Naantali",
   "country": "FIN",
+  "countryName": "Finlande",
   "icon": "bus",
   "coordinates": [22.03482851, 60.45297239]
 }, {
-  "name": "Tampere, Finlande",
+  "name": "Tampere",
   "country": "FIN",
+  "countryName": "Finlande",
   "icon": "rail",
   "coordinates": [23.78889072, 61.48530193]
 }, {
-  "name": "Porvoo, Finlande",
+  "name": "Porvoo",
   "country": "FIN",
+  "countryName": "Finlande",
   "icon": "bus",
   "coordinates": [25.62617735, 60.38021693]
 }, {
-  "name": "New York, États-Unis",
+  "name": "New York",
   "country": "USA",
+  "countryName": "États-Unis",
   "icon": "lodging",
   "coordinates": [-74.03416885, 40.69124247]
 }, {
-  "name": "Honolulu, États-Unis",
+  "name": "Honolulu",
   "country": "USA",
+  "countryName": "États-Unis",
   "icon": "lodging",
   "coordinates": [-157.88996258, 21.28024027]
 }, {
-  "name": "Gênes, Italie",
+  "name": "Gênes",
   "country": "ITA",
+  "countryName": "Italie",
   "icon": "car",
   "coordinates": [8.92904628, 44.38602972]
 }, {
-  "name": "Oslo, Norvège",
+  "name": "Oslo",
   "country": "NOR",
+  "countryName": "Norvège",
   "icon": "lodging",
   "coordinates": [10.76301648, 59.90022979]
 }, {
-  "name": "Bergen, Norvège",
+  "name": "Bergen",
   "country": "NOR",
+  "countryName": "Norvège",
   "icon": "lodging",
   "coordinates": [5.36355287, 60.40207804]
 }, {
-  "name": "Flåm, Norvège",
+  "name": "Flåm",
   "country": "NOR",
+  "countryName": "Norvège",
   "icon": "lodging",
   "coordinates": [7.15354086, 60.87255855]
 }, {
-  "name": "Solvorn, Norvège",
+  "name": "Solvorn",
   "country": "NOR",
+  "countryName": "Norvège",
   "icon": "lodging",
   "coordinates": [7.27342382, 61.31474847]
 }, {
-  "name": "Riga, Lettonie",
+  "name": "Riga",
   "country": "LVA",
+  "countryName": "Lettonie",
   "icon": "lodging",
   "coordinates": [24.06334337, 56.93635595]
 }, {
-  "name": "Tallinn, Estonie",
+  "name": "Tallinn",
   "country": "EST",
+  "countryName": "Estonie",
   "icon": "lodging",
   "coordinates": [24.71868385, 59.42277703]
 }, {
-  "name": "Vienne, Autriche",
+  "name": "Vienne",
   "country": "AUT",
+  "countryName": "Autriche",
   "icon": "lodging",
   "coordinates": [16.34209869, 48.18913119]
 }, {
-  "name": "Taipei, Taïwan",
+  "name": "Taipei",
   "country": "TWN",
+  "countryName": "Taïwan",
   "icon": "lodging",
   "coordinates": [121.52426121, 25.01454304]
 }, {
-  "name": "Tainan, Taïwan",
+  "name": "Tainan",
   "country": "TWN",
+  "countryName": "Taïwan",
   "icon": "lodging",
   "coordinates": [120.22708971, 22.97517442]
 }, {
-  "name": "Kaohsiung, Taïwan",
+  "name": "Kaohsiung",
   "country": "TWN",
+  "countryName": "Taïwan",
   "icon": "rail",
   "coordinates": [120.27032100, 22.60240599]
 }, {
-  "name": "Londres, Royaume-Uni",
+  "name": "Londres",
   "country": "GBR",
+  "countryName": "Royaume-Uni",
   "icon": "lodging",
   "coordinates": [-0.16968726, 51.49089805]
 }, {
-  "name": "Cambridge, Royaume-Uni",
+  "name": "Cambridge",
   "country": "GBR",
+  "countryName": "Royaume-Uni",
   "icon": "rail",
   "coordinates": [0.08074635, 52.21438737]
 }, {
-  "name": "Bangkok, Thaïlande",
+  "name": "Bangkok",
   "country": "THA",
+  "countryName": "Thaïlande",
   "icon": "lodging",
   "coordinates": [100.46713175, 13.72857399]
 }, {
-  "name": "Luang Prabang, Laos",
+  "name": "Luang Prabang",
   "country": "LAO",
+  "countryName": "Laos",
   "icon": "lodging",
   "coordinates": [102.09293010, 19.90002842]
 }, {
-  "name": "Siem Reap, Cambodge",
+  "name": "Siem Reap",
   "country": "KHM",
+  "countryName": "Cambodge",
   "icon": "lodging",
   "coordinates": [103.82199877, 13.32703828]
 }, {
-  "name": "Varsovie, Pologne",
+  "name": "Varsovie",
   "country": "POL",
+  "countryName": "Pologne",
   "icon": "airport",
   "coordinates": [21.03192617, 52.21380040]
 }, {
-  "name": "Munich, Allemagne",
+  "name": "Munich",
   "country": "DEU",
+  "countryName": "Allemagne",
   "icon": "airport",
   "coordinates": [11.61712750, 48.11794250]
 }, {
-  "name": "Francfort, Allemagne",
+  "name": "Francfort",
   "country": "DEU",
+  "countryName": "Allemagne",
   "icon": "airport",
   "coordinates": [8.64972494, 50.09474088]
 }, {
-  "name": "Milan, Italie",
+  "name": "Milan",
   "country": "ITA",
+  "countryName": "Italie",
   "icon": "airport",
   "coordinates": [9.15285956, 45.44650728]
 }, {
-  "name": "Amsterdam, Pays-Bas",
+  "name": "Amsterdam",
   "country": "NLD",
+  "countryName": "Pays-Bas",
   "icon": "airport",
   "coordinates": [4.86293781, 52.35365686]
 }, {
-  "name": "Dubaï - Émirats arabes unis",
+  "name": "Dubaï",
   "country": "ARE",
+  "countyName": "Émirats arabes unis",
   "icon": "airport",
   "coordinates": [55.22945465, 25.23094594]
 }, {
-  "name": "Zurich, Suisse",
+  "name": "Zurich",
   "country": "CHE",
+  "countryName": "Suisse",
   "icon": "airport",
   "coordinates": [8.49950755, 47.36200976]
 }, {
-  "name": "Stockholm, Suède",
+  "name": "Stockholm",
   "country": "SWE",
+  "countryName": "Suède",
   "icon": "airport",
   "coordinates": [18.02948425, 59.31737220]
 }]

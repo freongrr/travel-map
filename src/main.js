@@ -14,6 +14,7 @@ const DATA = {
             properties: {
                 "title": p.name,
                 "description": p.name,
+                "countryName": p.countryName,
                 "icon": p.icon
             },
             geometry: {
@@ -26,11 +27,23 @@ const DATA = {
 
 mapboxgl.accessToken = TOKEN;
 
+// Normal
+const styleUrl = "mapbox://styles/freongrr/cjjo11jdxf3rs2rpb5x42cv4m";
+const visitedCountryColor = "#DDD";
+const unvisitedCountryColor = "#888";
+const clusterColor = "#FFF";
+
+// Orange and black
+// const styleUrl = "mapbox://styles/freongrr/cjk5bl6a85uxy2rpeakfp2pyg";
+// const visitedCountryColor = "#F08000";
+// const unvisitedCountryColor = "#704010";
+// const clusterColor = "#F0F040";
+
 const map = new mapboxgl.Map({
     container: "map",
-    style: "mapbox://styles/freongrr/cjjo11jdxf3rs2rpb5x42cv4m"
-    // center: [-77.04, 38.907],
-    // zoom: 11.15
+    style: styleUrl,
+    center: [2, 35],
+    zoom: 1.1
 });
 
 map.on("load", () => {
@@ -54,19 +67,54 @@ map.on("load", () => {
         }
     });
     console.log("Country filter: " + countryFilter);
+    const reverseCountryFilter = [...countryFilter];
+    reverseCountryFilter[0] = "!in";
 
-    // The feature-state dependent fill-opacity expression will render the hover effect
-    //  when a feature's hover state is set to true.
     map.addLayer({
-        id: "countries-fills",
+        id: "not-visited-countries-fills",
+        type: "fill",
+        source: "countries",
+        layout: {},
+        filter: reverseCountryFilter,
+        paint: {
+            "fill-color": unvisitedCountryColor
+        }
+    }, "country-borders");
+
+    map.addLayer({
+        id: "visited-countries-fills",
         type: "fill",
         source: "countries",
         layout: {},
         filter: countryFilter,
         paint: {
-            "fill-color": "rgba(255, 255, 255, 0.75)"
+            "fill-color": visitedCountryColor
         }
     }, "country-borders");
+
+    map.addLayer({
+        id: "place-symbols",
+        type: "symbol",
+        source: "clustered-places",
+        filter: ["!has", "point_count"],
+        layout: {
+            "text-field": "{title}",
+            "text-font": ["Roboto Regular"],
+            // TODO : increase with zoom
+            "text-size": 18,
+            "text-letter-spacing": 0.05,
+            "text-offset": [0, 1],
+            "text-anchor": "top",
+            "icon-size": 1.5,
+            "icon-image": "{icon}-15"
+        },
+        paint: {
+            "text-color": "white",
+            "text-halo-color": "black",
+            "text-halo-width": 2,
+            "text-halo-blur": 1
+        }
+    });
 
     map.addLayer({
         id: "place-cluster",
@@ -74,8 +122,7 @@ map.on("load", () => {
         source: "clustered-places",
         filter: ["has", "point_count"],
         paint: {
-            "circle-blur": 0.5,
-            "circle-color": "#FFF",
+            "circle-color": clusterColor,
             "circle-radius": [
                 "step", ["get", "point_count"],
                 50,
@@ -97,31 +144,7 @@ map.on("load", () => {
             "text-size": 16
         },
         paint: {
-            "text-color": "#008",
-        }
-    });
-
-    map.addLayer({
-        id: "place-symbols",
-        type: "symbol",
-        source: "clustered-places",
-        filter: ["!has", "point_count"],
-        layout: {
-            "text-field": "{title}",
-            "text-font": ["Roboto Regular"],
-            // TODO : increase with zoom
-            "text-size": 16,
-            "text-letter-spacing": 0.05,
-            "text-offset": [0, 1],
-            "text-anchor": "top",
-            "icon-size": 1.5,
-            "icon-image": "{icon}-15"
-        },
-        paint: {
-            "text-color": "#008",
-            "text-halo-color": "white",
-            "text-halo-width": 2,
-            "text-halo-blur": 0.5
+            "text-color": "black",
         }
     });
 
@@ -131,6 +154,7 @@ map.on("load", () => {
         const feature = e.features[0];
         const coordinates = feature.geometry.coordinates.slice();
         const description = `${feature.properties.description}<br />
+                             ${feature.properties.countryName}<br />
                              Type: ${e.features[0].properties.icon}`;
 
         // Ensure that if the map is zoomed out such that multiple
