@@ -39,6 +39,7 @@ module.exports = {
             }
         }]
     },
+    devtool: "source-maps",
     plugins: [
         new HtmlWebpackPlugin({
             template: APP_DIR + "/index.html"
