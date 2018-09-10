@@ -12,7 +12,8 @@
   },
   "license": "ISC",
   "dependencies": {
-    "mapbox-gl": "0.47.0"
+    "mapbox-gl": "0.47.0",
+    "vue": "2.5.17"
   },
   "devDependencies": {
     "babel-core": "6.26.3",

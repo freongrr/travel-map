@@ -10,6 +10,11 @@ module.exports = {
         path: BUILD_DIR,
         filename: "[name].bundle.js"
     },
+    resolve: {
+        alias: {
+            "vue$": "vue/dist/vue.esm.js"
+        }
+    },
     module: {
         rules: [{
             test: /\.js$/,
@@ -32,7 +37,7 @@ module.exports = {
                 "sass-loader?sourceMap"
             ]
         }, {
-            test: /\.(geojson)$/,
+            test: /\.(geojson|png)$/,
             loader: "file-loader",
             options: {
                 name: "assets/[name].[ext]",

@@ -6,3 +6,30 @@ body {
   max-width: 400px;
   font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
+
+.mapContainer {
+  position: relative;
+  display: inline-block;
+
+  .mapControls {
+    min-width: 100px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid black;
+    padding: 1em;
+
+    ul {
+      padding: 0 0 0 1em;
+
+      li {
+        list-style: none;
+      }
+
+      input {
+        margin-right: 0.5em;
+      }
+    }
+  }
+}
