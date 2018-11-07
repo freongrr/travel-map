@@ -6,6 +6,7 @@ const BUILD_DIR = path.resolve(__dirname, "dist/");
 
 module.exports = {
     entry: APP_DIR + "/main.js",
+    devtool: "source-map",
     output: {
         path: BUILD_DIR,
         filename: "[name].bundle.js"
