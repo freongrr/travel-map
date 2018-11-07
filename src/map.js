@@ -39,11 +39,15 @@ const clusterColor = "#FFF";
 // const unvisitedCountryColor = "#704010";
 // const clusterColor = "#F0F040";
 
+const CLUSTERED_PLACE_SOURCE = "clustered-places";
+
 export default class Map {
 
-    constructor(containerId) {
+    constructor() {
         mapboxgl.accessToken = TOKEN;
+    }
 
+    init(containerId, callback) {
         this.map = new mapboxgl.Map({
             container: containerId,
             style: styleUrl,
@@ -51,11 +55,19 @@ export default class Map {
             zoom: 1.1
         });
 
-        this.map.on("load", () => this.onLoad());
+        this.map.on("load", () => this.onLoad(callback));
     }
 
-    onLoad() {
-        this.map.addSource("clustered-places", {
+    onLoad(callback) {
+        this.configureSources();
+        this.configureLayers();
+        this.configureEvents();
+
+        callback();
+    }
+
+    configureSources() {
+        this.map.addSource(CLUSTERED_PLACE_SOURCE, {
             type: "geojson",
             data: DATA,
             cluster: true
@@ -66,7 +78,9 @@ export default class Map {
             "type": "geojson",
             "data": COUNTRIES
         });
+    }
 
+    configureLayers() {
         const countryFilter = ["in", "alpha3"];
         PLACES.forEach(p => {
             if (p.country && countryFilter.indexOf(p.country) < 0) {
@@ -74,10 +88,10 @@ export default class Map {
             }
         });
 
-        console.log("Country filter: " + countryFilter);
         const reverseCountryFilter = [...countryFilter];
         reverseCountryFilter[0] = "!in";
 
+        // Overlay that shows non-visited countries
         this.map.addLayer({
             id: "not-visited-countries-fills",
             type: "fill",
@@ -89,6 +103,7 @@ export default class Map {
             }
         }, "country-borders");
 
+        // Overlay that shows visited countries (only when enabled)
         if (visitedCountryColor) {
             this.map.addLayer({
                 id: "visited-countries-fills",
@@ -102,15 +117,16 @@ export default class Map {
             }, "country-borders");
         }
 
+        // Shows a symbol at the exact location of a feature
+        // Only visible when clusters are not in the way
         this.map.addLayer({
             id: "place-symbols",
             type: "symbol",
-            source: "clustered-places",
+            source: CLUSTERED_PLACE_SOURCE,
             filter: ["!has", "point_count"],
             layout: {
                 "text-field": "{title}",
                 "text-font": ["Roboto Regular"],
-                // TODO : increase with zoom
                 "text-size": 18,
                 "text-letter-spacing": 0.05,
                 "text-offset": [0, 1],
@@ -126,10 +142,11 @@ export default class Map {
             }
         });
 
+        // Shows circles where a cluster of features is (with varying size)
         this.map.addLayer({
             id: "place-cluster",
             type: "circle",
-            source: "clustered-places",
+            source: CLUSTERED_PLACE_SOURCE,
             filter: ["has", "point_count"],
             paint: {
                 "circle-color": clusterColor,
@@ -144,10 +161,11 @@ export default class Map {
             }
         });
 
+        // Shows the symbol count on top of a cluser circle
         this.map.addLayer({
             id: "place-count",
             type: "symbol",
-            source: "clustered-places",
+            source: CLUSTERED_PLACE_SOURCE,
             filter: ["has", "point_count"],
             layout: {
                 "text-field": "{point_count_abbreviated} places",
@@ -157,7 +175,9 @@ export default class Map {
                 "text-color": "black",
             }
         });
+    }
 
+    configureEvents() {
         // When a click event occurs on a feature in the places layer, open a popup at the
         // location of the feature, with description HTML from its properties.
         this.map.on("click", "place-symbols", e => {
@@ -189,5 +209,20 @@ export default class Map {
         this.map.on("mouseleave", "place-symbols", () => {
             this.map.getCanvas().style.cursor = "";
         });
+    }
+
+    getAllFeatureTypes() {
+        const types = new Set();
+        DATA.features.forEach(f => types.add(f.properties.icon));
+        return [...types];
+    }
+
+    setFeatureTypes(types) {
+        // The layers can't be filtered because the data is clustered
+        const filteredData = {
+            ...DATA,
+            features: DATA.features.filter(f => types.indexOf(f.properties.icon) >= 0)
+        };
+        this.map.getSource(CLUSTERED_PLACE_SOURCE).setData(filteredData);
     }
 }
