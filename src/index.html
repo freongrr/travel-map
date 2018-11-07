@@ -14,9 +14,9 @@
   <h1>My Travel Map</h1>
   <div id="vue-view" class="mapContainer">
     <div>
-      <travel-map id="map" @load="onMapLoaded" />
+      <travel-map id="map" :location-types="locationTypes" @load="onMapLoaded" />
     </div>
-    <map-controls :types="locationTypes" />
+    <map-controls :location-types="locationTypes" />
   </div>
 </body>
 
