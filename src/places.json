@@ -250,4 +250,16 @@
   "countryName": "Suède",
   "icon": "airport",
   "coordinates": [18.02948425, 59.31737220]
+}, {
+  "name": "Incheon",
+  "country": "KOR",
+  "countryName": "Corée du Sud",
+  "icon": "airport",
+  "coordinates": [126.451147, 37.446444]
+}, {
+  "name": "Copenhagen",
+  "country": "DNK",
+  "countryName": "Danemark",
+  "icon": "airport",
+  "coordinates": [12.6524777, 55.6297979]
 }]
