@@ -16,5 +16,6 @@ export default {
           </label>
         </li>
       </ul>
+      <a href="javascript:void(0)" class="closeButton" @click="$emit('close')">(hide)</a>
     </div>`
 };

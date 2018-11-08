@@ -13,10 +13,11 @@
 <body>
   <h1>My Travel Map</h1>
   <div id="vue-view" class="mapContainer">
-    <div>
-      <travel-map id="map" :location-types="locationTypes" @load="onMapLoaded" />
-    </div>
-    <map-controls :location-types="locationTypes" />
+    <travel-map id="map" :location-types="locationTypes" @load="onMapLoaded"></travel-map>
+    <map-controls v-if="showFilters" :location-types="locationTypes" @close="showFilters = false"></map-controls>
+    <filter-button v-if="!showFilters" @click="showFilters = true"></filter-button>
+    <add-button v-if="!showFilters"></add-button>
+    <dialog-root></dialog-root>
   </div>
 </body>
 

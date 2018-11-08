@@ -1,16 +1,23 @@
 import Vue from "vue";
 import MapContainer from "./mapContainer";
 import MapControls from "./mapControls";
+import FilterButton from "./filterButton";
+import AddButton from "./addButton";
+import DialogRoot from "./dialogRoot";
 import "./styles.scss";
 
 window.vueApp = new Vue({
     el: "#vue-view",
     components: {
         "travel-map": MapContainer,
-        "map-controls": MapControls
+        "map-controls": MapControls,
+        "filter-button": FilterButton,
+        "add-button": AddButton,
+        "dialog-root": DialogRoot
     },
     data: {
-        locationTypes: []
+        locationTypes: [],
+        showFilters: false
     },
     methods: {
         onMapLoaded: function(map) {
