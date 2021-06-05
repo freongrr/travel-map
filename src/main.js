@@ -4,7 +4,7 @@ import MapControls from "./mapControls";
 import FilterButton from "./filterButton";
 import AddButton from "./addButton";
 import DialogRoot from "./dialogRoot";
-import "./styles.scss";
+import "./styles.css";
 
 window.vueApp = new Vue({
     el: "#vue-view",

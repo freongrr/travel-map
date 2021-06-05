@@ -1,7 +1,5 @@
 /* eslint no-unused-vars: off */
 
-import "./styles.scss";
-
 import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
 import TOKEN from "./mapbox-token.js";
 import PLACES from "./places.json";

@@ -31,11 +31,10 @@ module.exports = {
                 "eslint-loader"
             ]
         }, {
-            test: /\.scss$/,
+            test: /\.css$/,
             use: [
                 "style-loader?sourceMap",
-                "css-loader?sourceMap",
-                "sass-loader?sourceMap"
+                "css-loader?sourceMap"
             ]
         }, {
             test: /\.(geojson|png)$/,
@@ -45,7 +44,6 @@ module.exports = {
             }
         }]
     },
-    devtool: "source-maps",
     plugins: [
         new HtmlWebpackPlugin({
             template: APP_DIR + "/index.html"

@@ -1,0 +1,89 @@
+body {
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+.mapboxgl-popup {
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+.mapContainer {
+    position: relative;
+    display: inline-block;
+}
+
+.mapContainer .mapControls {
+    min-width: 100px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid black;
+    padding: 1em;
+}
+
+.mapContainer .mapControls ul {
+    padding: 0 0 0 1em;
+}
+
+.mapContainer .mapControls ul li {
+    list-style: none;
+}
+
+.mapContainer .mapControls ul input {
+    margin-right: 0.5em;
+}
+
+.mapContainer .mapControls .closeButton {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.mapContainer .addButton,
+.mapContainer .filterButton {
+    width: 60px;
+    height: 60px;
+    font-size: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    background-color: #7dd4ff;
+    border-radius: 100%;
+    box-shadow: 3px 3px 10px 1px rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+    user-select: none;
+}
+
+.mapContainer .addButton :hover,
+.mapContainer .filterButton:hover {
+    background-color: #CFF;
+}
+
+.mapContainer .filterButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.mapContainer .filterButton:before {
+    content: "\26B2";
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    display: inline-block;
+}
+
+.mapContainer .addButton {
+    position: absolute;
+    top: 10px;
+    right: 80px;
+}
+
+.mapContainer .addButton:before {
+    content: "\FF0B";
+    display: inline-block;
+    font-size: 55px;
+}
