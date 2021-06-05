@@ -65,6 +65,18 @@
   "icon": "lodging",
   "coordinates": [7.78991905, 48.55591517]
 }, {
+  "name": "Colmar",
+  "country": "FRA",
+  "countryName": "France",
+  "icon": "lodging",
+  "coordinates": [7.355, 48.0811]
+}, {
+  "name": "Ribeauvillé",
+  "country": "FRA",
+  "countryName": "France",
+  "icon": "car",
+  "coordinates": [7.320495, 48.194558]
+}, {
   "name": "Helsinki",
   "country": "FIN",
   "countryName": "Finlande",
@@ -146,7 +158,7 @@
   "name": "Tallinn",
   "country": "EST",
   "countryName": "Estonie",
-  "icon": "lodging",
+  "icon": "ferry",
   "coordinates": [24.71868385, 59.42277703]
 }, {
   "name": "Vienne",
@@ -230,7 +242,7 @@
   "name": "Amsterdam",
   "country": "NLD",
   "countryName": "Pays-Bas",
-  "icon": "airport",
+  "icon": "lodging",
   "coordinates": [4.86293781, 52.35365686]
 }, {
   "name": "Dubaï",
@@ -262,4 +274,22 @@
   "countryName": "Danemark",
   "icon": "airport",
   "coordinates": [12.6524777, 55.6297979]
+}, {
+  "name": "Prague",
+  "country": "CZE",
+  "countryName": "République Tchèque",
+  "icon": "lodging",
+  "coordinates": [14.4378005, 50.0755381]
+}, {
+  "name": "Sopron",
+  "country": "HUN",
+  "countryName": "Hongrie",
+  "icon": "rail",
+  "coordinates": [16.5905, 47.6850]
+}, {
+  "name": "Angers",
+  "country": "FRA",
+  "countryName": "France",
+  "icon": "rail",
+  "coordinates": [-0.556888, 47.465029]
 }]

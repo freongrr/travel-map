@@ -6,6 +6,7 @@ import PLACES from "./places.json";
 import COUNTRIES from "./countries.geojson";
 
 // Convert custom format to geojson FeatureCollection
+// Note: icons are read from Images uploaded in the style
 const DATA = {
     type: "FeatureCollection",
     features: PLACES.map(p => {
@@ -159,7 +160,7 @@ export default class Map {
             }
         });
 
-        // Shows the symbol count on top of a cluser circle
+        // Shows the symbol count on top of a cluster circle
         this.map.addLayer({
             id: "place-count",
             type: "symbol",
